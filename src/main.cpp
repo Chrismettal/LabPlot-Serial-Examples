@@ -11,13 +11,13 @@
 #define INTERVAL  1000  // Send interval in milliseconds
 
 // Mode, choose one.
-const uint8_t mode = singleASCII;
 enum mode {
   singleASCII,  // --> One ASCII value every INTERVAL. No Newline or seperator. 9 decimals.
   multiASCII,   // --> ASCII CSV of several values every INTERVAL. separated by SEPERATOR. 9 decimals.
   singleBinay,  // --> One binary value every INTERVAL. Formatted TODO
   multiBinary   // --> Several binary values every INTERVAL. Formatted TODO
 };
+const uint8_t mode = singleASCII;
 
 // ----------------------------------------------------------------------------
 //  Declarations
