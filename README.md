@@ -19,8 +19,8 @@ While created in collaboration with the core LabPlot developer team, this Repo d
 - [Uploading code](#uploading-code)
 - [Observing via Terminal](#observing-via-terminal)
 - [Examples](#examples)
-    - [Single Value ASCII](#single-value-ascii)
-    - [Multi Value ASCII](#multi-value-ascii)
+  - [Single Value ASCII](#single-value-ascii)
+  - [Multi Value ASCII](#multi-value-ascii)
 - [Donations](#donations)
 - [License](#license)
 
@@ -35,7 +35,26 @@ The Code running on the Pico was created with [PlatformIO](https://platformio.or
 
 ## Code Parameters
 
-TODO
+At the top of the example Pico code you'll find some parameters that you need to set for different types of live data source examples. The default settings will send a single float value every `1000 ms` on a terminal with `9600` baudrate. 
+
+```C
+// ----------------------------------------------------------------------------
+//  Parameters
+// ----------------------------------------------------------------------------
+#define BAUDRATE  9600   // Serial baudrate
+#define SEPERATOR ","    // Seperator between multiple ASCII values in multiASCII mode
+#define INTERVAL  1000.0 // Send interval in milliseconds
+
+// Mode, choose one.
+enum mode {
+  singleASCII,  // --> One ASCII value every INTERVAL. No Newline or seperator. 9 decimals.
+  multiASCII,   // --> ASCII CSV of several values every INTERVAL. separated by SEPERATOR. 9 decimals.
+  singleBinay,  // --> One binary value every INTERVAL. Formatted TODO
+  multiBinary   // --> Several binary values every INTERVAL. Formatted TODO
+};
+const uint8_t mode = singleASCII;
+```
+
 
 ## Uploading code
 
@@ -114,6 +133,10 @@ Update interval needs to be set exactly the same as the interval your device sen
 After accepting, you should see your live data source update every `INTERVAL` with the new data received, along with a timestamp and index created by LabPlot as chosen in the LDS settings:
 
 ![SingleLDSspread](/img/SingleLDSspread.png)
+
+Plotting that value with default settings should show you a live updating sine wave:
+
+![SingleValuePlot](/img/SingleValuePlot.png)
 
 ### Multi Value ASCII
 
