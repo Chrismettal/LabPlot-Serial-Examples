@@ -99,6 +99,22 @@ In this example, a single ASCII value is sent every `INTERVAL`, ending with `\r\
 -1.000000000
 ```
 
+In LabPlot, add a new live data source:
+
+![AddLDS](/img/AddLDS.png)
+
+Apply the following settings to your live data source. Make sure to choose the serial port you found earlier (`ttyACM0` for me), the baudrate chosen in the code parameters (`9600` by default) and apply a custom filter as shown.
+
+Since we are only sending a single value, column seperator won't matter.
+
+Update interval needs to be set exactly the same as the interval your device sends at as of `Labtplot 2.10.0-1982-gb1a964f82` but this is subject to change.
+
+![LDSettings](/img/LDSettings.png)
+
+After accepting, you should see your live data source update every `INTERVAL` with the new data received, along with a timestamp and index created by LabPlot as chosen in the LDS settings:
+
+![SingleLDSspread](/img/SingleLDSspread.png)
+
 ### Multi Value ASCII
 
 In this example, a 4 ASCII values are sent every `INTERVAL`, ending with `\r\n`, split by `SEPERATOR`. This is what the serial port sends out when observed through the terminal with default settings:
