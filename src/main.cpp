@@ -6,9 +6,9 @@
 // ----------------------------------------------------------------------------
 //  Parameters
 // ----------------------------------------------------------------------------
-#define BAUDRATE  9600  // Serial baudrate
-#define SEPERATOR ","   // Seperator between multiple ASCII values in multiASCII mode
-#define INTERVAL  1000  // Send interval in milliseconds
+#define BAUDRATE  9600   // Serial baudrate
+#define SEPERATOR ","    // Seperator between multiple ASCII values in multiASCII mode
+#define INTERVAL  1000.0 // Send interval in milliseconds
 
 // Mode, choose one.
 enum mode {
@@ -22,11 +22,11 @@ const uint8_t mode = singleASCII;
 // ----------------------------------------------------------------------------
 //  Declarations
 // ----------------------------------------------------------------------------
-uint16_t counter = 0;
-uint16_t value_1 = 0;
-uint16_t value_2 = 0;
-uint16_t value_3 = 0;
-uint16_t value_4 = 0;
+float counter = 0.0;
+float value_1 = 0.0;
+float value_2 = 0.0;
+float value_3 = 0.0;
+float value_4 = 0.0;
 
 const float sinePeriod = 20;  // sine period for value_2 and value_3 in seconds
 const float phaseShift = 2;   // phaseShift for value_3 in seconds
@@ -56,7 +56,7 @@ void loop() {
   counter++;
 
   // Calculate some fake values
-  value_1 = counter * INTERVAL / 1000;
+  value_1 = counter * INTERVAL / 1000.0;
   value_2 = sin((2 * PI /sinePeriod) *  value_1);
   value_3 = sin((2 * PI /sinePeriod) * (value_1 + phaseShift));
   value_4 = value_2 * -0.5;
